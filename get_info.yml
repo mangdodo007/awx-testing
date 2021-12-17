@@ -1,11 +1,15 @@
 ---
-- hosts: CP_MGMT
-  connection: httpapi
-  tasks:
-    - name: collect-host facts
-      cp_mgmt_host_facts:
-  	 name: New CP_MGMT Host 1
-      register: cp_host
-    - name: display host facts
-      debug:
-  	 msg: "{{ cp_host }}"
+   - name: capture show output
+     hosts: {{ Group }}
+     gather_facts: no
+     connection: network_cli
+
+     tasks:
+        - name: show run
+         ios_command:
+           commands:
+           - show run
+           - show ip route
+           - show ip eigrp neighbors
+           - show version
+         register: config
