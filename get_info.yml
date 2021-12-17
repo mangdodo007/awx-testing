@@ -6,10 +6,10 @@
 
      tasks:
         - name: show run
-         ios_command:
+          ios_command:
            commands:
            - show run
            - show ip route
            - show ip eigrp neighbors
            - show version
-         register: config
+          register: config
