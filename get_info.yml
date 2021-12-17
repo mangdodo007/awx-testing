@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- hosts: CP_MGMT
   connection: httpapi
   tasks:
     - name: collect-host facts
-	  cp_mgmt_host_facts:
-  	    name: New CP_MGMT Host 1
-	  register: cp_host
+      cp_mgmt_host_facts:
+  	 name: New CP_MGMT Host 1
+	 register: cp_host
     - name: display host facts
-	  debug:
-  	    msg: "{{ cp_host }}"
+      debug:
+  	 msg: "{{ cp_host }}"
