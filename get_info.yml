@@ -1,6 +1,6 @@
 ---
    - name: capture show output
-     hosts: {{ Group }}
+     hosts: Cisco
      gather_facts: no
      connection: network_cli
 
