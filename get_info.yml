@@ -17,3 +17,13 @@
           copy:
            content: "{{ config.stdout | replace('\\n', '\n') }}"           
            dest: "/tmp/{{ inventory_hostname }}.ios"
+        - name: Sending as E-mail using Gmail SMTP Server
+          mail:
+           host: smtp.gmail.com
+           port: 587
+           username: mangdodox123@gmail.com
+           password: Mikkir@123
+           to: prasetyolindo@gmail.com
+           subject: Ansible-report
+           body: 'System {{ inventory_hostname }} has been successfully provisioned.'
+
