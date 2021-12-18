@@ -1,0 +1,17 @@
+---
+   - name: Backup COnfig
+     hosts: Cisco
+     gather_facts: no
+     connection: network_cli
+
+     tasks:
+        - name: Get show running config
+          ios_command:
+           commands:
+           - show run
+          register: config
+        - name: save output to local directory
+          copy:
+           content: "{{ config.stdout | replace('\\n', '\n') }}"           
+           dest: "/tmp/show-config-{{ inventory_hostname }}.txt"
+
